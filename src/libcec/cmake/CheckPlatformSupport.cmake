@@ -125,6 +125,30 @@ else()
   else()
     set(HAVE_EXYNOS_API 0)
   endif()
+
+  # i.MX6
+  if (WITH_IMX)
+    set(LIB_INFO "${LIB_INFO}, 'i.MX'")
+    set(CEC_SOURCES_ADAPTER_IMX adapter/IMX/IMXCECAdapterDetection.cpp
+                                adapter/IMX/IMXCECAdapterCommunication.cpp)
+    source_group("Source Files\\adapter\\IMX" FILES ${CEC_SOURCES_ADAPTER_IMX})
+    list(APPEND CEC_SOURCES ${CEC_SOURCES_ADAPTER_IMX})
+    set(HAVE_IMX_API 1)
+  else()
+    set(HAVE_IMX_API 0)
+  endif()
+
+  # Amlogic
+  if (WITH_AMLOGIC)
+    set(LIB_INFO "${LIB_INFO}, 'Amlogic'")
+    set(CEC_SOURCES_ADAPTER_AMLOGIC adapter/Amlogic/AmlogicCECAdapterDetection.cpp
+                                    adapter/Amlogic/AmlogicCECAdapterCommunication.cpp)
+    source_group("Source Files\\adapter\\Amlogic" FILES ${CEC_SOURCES_ADAPTER_AMLOGIC})
+    list(APPEND CEC_SOURCES ${CEC_SOURCES_ADAPTER_AMLOGIC})
+    set(HAVE_AMLOGIC_API 1)
+  else()
+    set(HAVE_AMLOGIC_API 0)
+  endif()
 endif()
 
 # rt

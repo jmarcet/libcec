@@ -44,6 +44,18 @@ else()
   message(STATUS "Exynos support:                         no")
 endif()
 
+if (HAVE_IMX_API)
+  message(STATUS "IMX support:                            yes")
+else()
+  message(STATUS "IMX support:                            no")
+endif()
+
+if (HAVE_AMLOGIC_API)
+  message(STATUS "Amlogic support:                        yes")
+else()
+  message(STATUS "Amlogic support:                        no")
+endif()
+
 if (HAVE_PYTHON)
   message(STATUS "Python support:                         version ${PYTHONLIBS_VERSION_STRING} (${PYTHON_VERSION})")
 else()
