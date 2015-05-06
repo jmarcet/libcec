@@ -84,8 +84,6 @@ int8_t CAdapterFactory::DetectAdapters(cec_adapter_descriptor *deviceList, uint8
   }
   else
     iAdaptersFound += CUSBCECAdapterDetection::FindAdapters(deviceList, iBufSize, strDevicePath);
-#else
-  m_lib->AddLog(CEC_LOG_WARNING, "libCEC has not been compiled with support for the Pulse-Eight USB-CEC Adapter");
 #endif
 
 #if defined(HAVE_RPI_API)

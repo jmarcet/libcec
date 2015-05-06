@@ -10,14 +10,16 @@
 #	HAVE_RPI_API              1 if Raspberry Pi is supported
 #	HAVE_TDA995X_API          1 if TDA995X is supported
 #	HAVE_EXYNOS_API           1 if Exynos is supported
-# HAVE_P8_USB_DETECT        1 if Pulse-Eight devices can be auto-detected
+#	HAVE_P8_USB_DETECT        1 if Pulse-Eight devices can be auto-detected
 #
 
 set(PLATFORM_LIBREQUIRES "")
 
 # Pulse-Eight devices are always supported
-add_definitions(-DHAVE_P8_USB)
-
+if (WITH_P8_USB)
+  add_definitions(-DHAVE_P8_USB)
+endif()
+ 
 set(LIB_INFO "compiled on ${CMAKE_SYSTEM}")
 
 if(WIN32)
@@ -29,8 +31,10 @@ if(WIN32)
   else()
     add_definitions(-D_USE_32BIT_TIME_T)
   endif()
-  set(HAVE_P8_USB_DETECT 1)
-  set(LIB_INFO "${LIB_INFO}, features: P8_USB, P8_detect")
+  if (WITH_P8_USB)
+    set(HAVE_P8_USB_DETECT 1)
+    set(LIB_INFO "${LIB_INFO}, features: P8_USB, P8_detect")
+  endif()
 
   list(APPEND CEC_SOURCES_PLATFORM platform/windows/os-edid.cpp
                                    platform/windows/serialport.cpp)
@@ -41,9 +45,11 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -Wextra -Wno-missing-field-initializers")
   list(APPEND CEC_SOURCES_PLATFORM platform/posix/os-edid.cpp
                                    platform/posix/serialport.cpp)
-  set(HAVE_P8_USB_DETECT 0)
   set(LIB_DESTINATION "${CMAKE_INSTALL_LIBDIR}")
-  set(LIB_INFO "${LIB_INFO}, features: P8_USB")
+  if (WITH_P8_USB)
+    set(HAVE_P8_USB_DETECT 0)
+    set(LIB_INFO "${LIB_INFO}, features: P8_USB")
+  endif()
 
   # lockdev
   check_include_files(lockdev.h HAVE_LOCKDEV_HEADERS)
@@ -57,16 +63,20 @@ else()
   # udev
   check_library_exists(udev udev_new "" HAVE_LIBUDEV)
   if (HAVE_LIBUDEV)
-    set(LIB_INFO "${LIB_INFO}, P8_detect")
+    if (WITH_P8_USB)
+      set(LIB_INFO "${LIB_INFO}, P8_detect")
+    endif()
     set(PLATFORM_LIBREQUIRES "${PLATFORM_LIBREQUIRES} udev")
     list(APPEND CMAKE_REQUIRED_LIBRARIES "udev")
-    set(HAVE_P8_USB_DETECT 1)
+    if (WITH_P8_USB)
+      set(HAVE_P8_USB_DETECT 1)
+    endif()
   endif()
 
   # xrandr
   check_include_files("X11/Xlib.h;X11/Xatom.h;X11/extensions/Xrandr.h" HAVE_RANDR_HEADERS)
   check_library_exists(Xrandr XRRGetScreenResources "" HAVE_RANDR_LIB)
-  if (HAVE_RANDR_HEADERS AND HAVE_RANDR_LIB)
+  if (HAVE_RANDR_HEADERS AND HAVE_RANDR_LIB AND WITH_RANDR)
     set(LIB_INFO "${LIB_INFO}, randr")
     list(APPEND CEC_SOURCES_PLATFORM platform/X11/randr-edid.cpp)
     set(HAVE_RANDR 1)
@@ -76,7 +86,7 @@ else()
 
   # raspberry pi
   check_library_exists(bcm_host vchi_initialise "" HAVE_RPI_API)
-  if (HAVE_RPI_API)
+  if (HAVE_RPI_API AND WITH_RPI)
     set(LIB_INFO "${LIB_INFO}, 'RPi'")
     list(APPEND CMAKE_REQUIRED_LIBRARIES "vcos")
     list(APPEND CMAKE_REQUIRED_LIBRARIES "vchiq_arm")
@@ -85,26 +95,33 @@ else()
                                 adapter/RPi/RPiCECAdapterMessageQueue.cpp)
     source_group("Source Files\\adapter\\RPi" FILES ${CEC_SOURCES_ADAPTER_RPI})
     list(APPEND CEC_SOURCES ${CEC_SOURCES_ADAPTER_RPI})
+    set(HAVE_RPI_API 1)
+  else()
+    set(HAVE_RPI_API 0)
   endif()
 
   # TDA995x
   check_include_files("tda998x_ioctl.h;comps/tmdlHdmiCEC/inc/tmdlHdmiCEC_Types.h" HAVE_TDA995X_API)
-  if (HAVE_TDA995X_API)
+  if (HAVE_TDA995X_API AND WITH_TDA995X)
     set(LIB_INFO "${LIB_INFO}, 'TDA995x'")
     set(CEC_SOURCES_ADAPTER_TDA995x adapter/TDA995x/TDA995xCECAdapterDetection.cpp
                                     adapter/TDA995x/TDA995xCECAdapterCommunication.cpp)
     source_group("Source Files\\adapter\\TDA995x" FILES ${CEC_SOURCES_ADAPTER_TDA995x})
     list(APPEND CEC_SOURCES ${CEC_SOURCES_ADAPTER_TDA995x})
+    set(HAVE_TDA995X_API 1)
+  else()
+    set(HAVE_TDA995X_API 0)
   endif()
 
   # Exynos
-  if (${HAVE_EXYNOS_API})
+  if (WITH_EXYNOS)
     set(LIB_INFO "${LIB_INFO}, 'Exynos'")
     set(HAVE_EXYNOS_API 1)
     set(CEC_SOURCES_ADAPTER_EXYNOS adapter/Exynos/ExynosCECAdapterDetection.cpp
                                    adapter/Exynos/ExynosCECAdapterCommunication.cpp)
     source_group("Source Files\\adapter\\Exynos" FILES ${CEC_SOURCES_ADAPTER_EXYNOS})
     list(APPEND CEC_SOURCES ${CEC_SOURCES_ADAPTER_EXYNOS})
+    set(HAVE_EXYNOS_API 1)
   else()
     set(HAVE_EXYNOS_API 0)
   endif()
