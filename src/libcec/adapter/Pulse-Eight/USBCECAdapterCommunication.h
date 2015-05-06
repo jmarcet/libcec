@@ -33,7 +33,7 @@
  */
 
 #include "env.h"
-#include "platform/threads/threads.h"
+#include "kodi/threads/threads.h"
 #include "adapter/AdapterCommunication.h"
 #include "USBCECAdapterMessage.h"
 

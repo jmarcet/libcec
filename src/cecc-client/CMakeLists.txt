@@ -12,14 +12,14 @@ include(CheckCSourceCompiles)
 include(CheckLibraryExists)
 include(CheckIncludeFiles)
 
-find_package(platform REQUIRED)
+find_package(kodiplatform REQUIRED)
 find_package(Threads REQUIRED)
 
 set(ceccclient_SOURCES cecc-client.c)
 
 add_executable(cecc-client ${ceccclient_SOURCES})
 set_target_properties(cecc-client PROPERTIES VERSION ${LIBCEC_VERSION_MAJOR}.${LIBCEC_VERSION_MINOR}.${LIBCEC_VERSION_PATCH})
-target_link_libraries(cecc-client ${platform_LIBRARIES})
+target_link_libraries(cecc-client ${kodiplatform_LIBRARIES})
 target_link_libraries(cecc-client ${CMAKE_THREAD_LIBS_INIT})
 
 if (NOT WIN32)
@@ -40,7 +40,7 @@ else()
   endif()
 endif()
 
-include_directories(${platform_INCLUDE_DIRS}
+include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}
                     ${PROJECT_SOURCE_DIR}/../../include)
 

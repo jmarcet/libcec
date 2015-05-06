@@ -42,7 +42,7 @@
 
 #include "CECTypeUtils.h"
 #include "LibCEC.h"
-#include "platform/util/buffer.h"
+#include "kodi/util/buffer.h"
 
 using namespace CEC;
 using namespace PLATFORM;

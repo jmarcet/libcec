@@ -41,7 +41,7 @@
 #include "CECProcessor.h"
 #include "LibCEC.h"
 #include "CECTypeUtils.h"
-#include "platform/util/util.h"
+#include "kodi/util/util.h"
 
 using namespace CEC;
 using namespace PLATFORM;

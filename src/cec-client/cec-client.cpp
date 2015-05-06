@@ -42,9 +42,9 @@
 #include <sstream>
 #include <signal.h>
 #include <stdlib.h>
-#include "platform/os.h"
-#include "platform/util/StringUtils.h"
-#include "platform/threads/threads.h"
+#include "kodi/os.h"
+#include "kodi/util/StringUtils.h"
+#include "kodi/threads/threads.h"
 #if defined(HAVE_CURSES_API)
   #include "curses/CursesControl.h"
 #endif

@@ -38,8 +38,8 @@
 
 #include "CECTypeUtils.h"
 #include "LibCEC.h"
-#include "platform/sockets/cdevsocket.h"
-#include "platform/util/buffer.h"
+#include "kodi/sockets/cdevsocket.h"
+#include "kodi/util/buffer.h"
 
 extern "C" {
 #define __cec_h__

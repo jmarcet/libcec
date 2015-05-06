@@ -33,7 +33,7 @@
 
 #include "../sockets/serialport.h"
 #include "../util/baudrate.h"
-#include "platform/util/timeutils.h"
+#include "kodi/util/timeutils.h"
 
 using namespace PLATFORM;
 

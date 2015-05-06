@@ -33,8 +33,8 @@
  */
 
 #include "env.h"
-#include "platform/threads/mutex.h"
-#include "platform/util/buffer.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/util/buffer.h"
 
 namespace CEC
 {

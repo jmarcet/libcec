@@ -18,10 +18,10 @@ if (SUPPORTS_CXX11)
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
 endif()
 
-find_package(platform REQUIRED)
+find_package(kodiplatform REQUIRED)
 find_package(Threads REQUIRED)
 
-include_directories(${platform_INCLUDE_DIRS}
+include_directories(${kodiplatform_INCLUDE_DIRS}
                     ${PROJECT_SOURCE_DIR}
                     ${PROJECT_SOURCE_DIR}/../../include)
 
@@ -140,7 +140,7 @@ list(APPEND CEC_SOURCES ${CEC_HEADERS}
                         ${CEC_SOURCES_PLATFORM})
 
 # write env.h
-set(LIBCEC_LIBREQUIRES "platform ${PLATFORM_LIBREQUIRES}")
+set(LIBCEC_LIBREQUIRES "kodiplatform ${PLATFORM_LIBREQUIRES}")
 configure_file(${CMAKE_CURRENT_SOURCE_DIR}/env.h.in ${CMAKE_CURRENT_SOURCE_DIR}/env.h)
 if (WIN32)
   # write libcec.rc
@@ -173,7 +173,7 @@ install(TARGETS cec
         DESTINATION ${LIB_DESTINATION})
 set_target_properties(cec PROPERTIES VERSION   ${LIBCEC_VERSION_MAJOR}.${LIBCEC_VERSION_MINOR}.${LIBCEC_VERSION_PATCH}
                                      SOVERSION ${LIBCEC_VERSION_MAJOR}.0)
-target_link_libraries(cec ${platform_LIBRARIES})
+target_link_libraries(cec ${kodiplatform_LIBRARIES})
 target_link_libraries(cec ${CMAKE_THREAD_LIBS_INIT})
 
 include(cmake/LinkPlatformSupport.cmake)

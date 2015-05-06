@@ -33,7 +33,7 @@
 
 #include "env.h"
 
-#include "platform/os.h"
+#include "kodi/os.h"
 #include "nv-edid.h"
 #include <stdio.h>
 

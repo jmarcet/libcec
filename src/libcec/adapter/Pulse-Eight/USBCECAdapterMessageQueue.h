@@ -33,9 +33,9 @@
  */
 
 #include "env.h"
-#include "platform/threads/threads.h"
-#include "platform/util/buffer.h"
-#include "platform/util/timeutils.h"
+#include "kodi/threads/threads.h"
+#include "kodi/util/buffer.h"
+#include "kodi/util/timeutils.h"
 #include <map>
 #include "USBCECAdapterMessage.h"
 

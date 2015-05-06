@@ -44,7 +44,7 @@
 #include "cectypes.h"
 #include "cec.h"
 #include "CECTypeUtils.h"
-#include "platform/threads/mutex.h"
+#include "kodi/threads/mutex.h"
 
 /** XXX python does a #define PLATFORM, which causes a collision with our PLATFORM namespace */
 #ifdef _platform_tmp

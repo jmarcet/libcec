@@ -36,7 +36,7 @@
 
 #include "USBCECAdapterCommunication.h"
 #include "USBCECAdapterMessage.h"
-#include "platform/sockets/socket.h"
+#include "kodi/sockets/socket.h"
 #include "LibCEC.h"
 
 using namespace CEC;

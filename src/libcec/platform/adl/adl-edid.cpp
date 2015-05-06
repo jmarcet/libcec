@@ -36,7 +36,7 @@
 
 // for dlsym and friends
 #if defined(__WINDOWS__)
-#include "platform/windows/dlfcn-win32.h"
+#include "kodi/windows/dlfcn-win32.h"
 #endif
 
 using namespace PLATFORM;

@@ -36,7 +36,7 @@
 #include <vector>
 #include <string>
 #include <map>
-#include "platform/threads/mutex.h"
+#include "kodi/threads/mutex.h"
 
 namespace CEC
 {

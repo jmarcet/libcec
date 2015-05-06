@@ -34,8 +34,8 @@
 
 #include "env.h"
 #include <string>
-#include "platform/threads/threads.h"
-#include "platform/util/buffer.h"
+#include "kodi/threads/threads.h"
+#include "kodi/util/buffer.h"
 #include <memory>
 
 namespace CEC

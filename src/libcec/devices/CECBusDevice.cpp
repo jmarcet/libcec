@@ -46,8 +46,8 @@
 #include "implementations/AQCommandHandler.h"
 #include "LibCEC.h"
 #include "CECTypeUtils.h"
-#include "platform/util/timeutils.h"
-#include "platform/util/util.h"
+#include "kodi/util/timeutils.h"
+#include "kodi/util/util.h"
 
 #include "CECAudioSystem.h"
 #include "CECPlaybackDevice.h"

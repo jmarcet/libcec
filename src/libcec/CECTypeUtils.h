@@ -33,7 +33,7 @@
  */
 
 #include "env.h"
-#include "platform/util/StringUtils.h"
+#include "kodi/util/StringUtils.h"
 
 namespace CEC
 {

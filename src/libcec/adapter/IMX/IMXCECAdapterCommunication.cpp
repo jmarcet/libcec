@@ -32,9 +32,9 @@
 
 #include "CECTypeUtils.h"
 #include "LibCEC.h"
-#include "platform/sockets/cdevsocket.h"
-#include "platform/util/StdString.h"
-#include "platform/util/buffer.h"
+#include "kodi/sockets/cdevsocket.h"
+#include "kodi/util/StdString.h"
+#include "kodi/util/buffer.h"
 
 /*
  * Ioctl definitions from kernel header

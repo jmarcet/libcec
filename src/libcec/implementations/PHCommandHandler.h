@@ -34,7 +34,7 @@
 
 #include "env.h"
 #include "CECCommandHandler.h"
-#include "platform/threads/threads.h"
+#include "kodi/threads/threads.h"
 
 namespace CEC
 {

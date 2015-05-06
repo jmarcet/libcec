@@ -33,7 +33,7 @@
  */
 
 #include "env.h"
-#include "platform/util/buffer.h"
+#include "kodi/util/buffer.h"
 #include <map>
 #include "adapter/AdapterCommunication.h"
 

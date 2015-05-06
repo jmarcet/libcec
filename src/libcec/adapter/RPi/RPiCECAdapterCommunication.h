@@ -36,7 +36,7 @@
 #if defined(HAVE_RPI_API)
 
 #include "adapter/AdapterCommunication.h"
-#include "platform/threads/threads.h"
+#include "kodi/threads/threads.h"
 
 #define RPI_ADAPTER_VID 0x2708
 #define RPI_ADAPTER_PID 0x1001

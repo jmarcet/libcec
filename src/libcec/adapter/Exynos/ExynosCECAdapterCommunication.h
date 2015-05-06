@@ -36,8 +36,8 @@
 
 #if defined(HAVE_EXYNOS_API)
 
-#include "platform/threads/mutex.h"
-#include "platform/threads/threads.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/threads/threads.h"
 #include "../AdapterCommunication.h"
 #include <map>
 

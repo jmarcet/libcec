@@ -35,7 +35,7 @@
 #include "env.h"
 #include <string>
 #include "cec.h"
-#include "platform/util/buffer.h"
+#include "kodi/util/buffer.h"
 #include "CECTypeUtils.h"
 #include <memory>
 

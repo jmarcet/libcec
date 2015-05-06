@@ -33,7 +33,7 @@
  */
 
 #include "env.h"
-#include "platform/threads/mutex.h"
+#include "kodi/threads/mutex.h"
 #include "USBCECAdapterMessage.h"
 
 namespace CEC

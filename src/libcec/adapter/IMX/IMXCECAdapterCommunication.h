@@ -28,9 +28,9 @@
 
 #if defined(HAVE_IMX_API)
 
-#include "platform/threads/mutex.h"
-#include "platform/threads/threads.h"
-#include "platform/sockets/socket.h"
+#include "kodi/threads/mutex.h"
+#include "kodi/threads/threads.h"
+#include "kodi/sockets/socket.h"
 #include "../AdapterCommunication.h"
 #include <map>
 
